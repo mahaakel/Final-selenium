@@ -24,6 +24,7 @@ public class checkPassword {
 		      browser.get(url);
 		
 	  }
+	 
 	 // test 1 correct password Maha123
 	 @Test
 	 public void CorrectPassword1 () {

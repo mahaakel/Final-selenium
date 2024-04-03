@@ -137,7 +137,7 @@ public class triangle {
 	
 	
 	
-	/// all negative :
+	/// all negative : -6,-1,-2
 	@Test
 	public void negativeValues() {
 	
@@ -191,7 +191,7 @@ public class triangle {
 		
 		
 		
-		// zero and positive sides :
+		// zero and positive sides :7,0,3
 		@Test
 		public void Tests6() {
 		
@@ -205,6 +205,7 @@ public class triangle {
 			 assertNotEquals(result ,expectedResult);
 			 browser.close();
 		}
+		
 		
 		
 		// max -1 and nominal:
@@ -221,12 +222,23 @@ public class triangle {
 			 assertNotEquals(result ,expectedResult);
 			 browser.close();
 		}
-	
-	
-	
-	
-	
-	
+		
+		
+		
+		 // Test 8  Isosceles triangle with 5,5,3
+		@Test
+		public void Tests8() {
+	  	
+			
+			 browser.findElement(By.name("side1")).sendKeys("50");
+			 browser.findElement(By.name("side2")).sendKeys("50");
+			 browser.findElement(By.name("side3")).sendKeys("60");
+			 String expectedResult = "Isosceles";
+			 browser.findElement(By.id("identify-triangle-action")).click();
+			 String result= browser.findElements(By.id("triangle-type")).toString();
+			 assertNotEquals(result ,expectedResult);
+			 browser.close();
+	  }
 	
 	
 	
