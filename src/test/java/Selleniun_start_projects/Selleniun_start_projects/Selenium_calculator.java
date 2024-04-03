@@ -18,7 +18,7 @@ public class Selenium_calculator {
 	 @Before
 	  public void setup() {
 		 
-			  System.setProperty("webdriver.gecko.driver","C:\\geckodriver-v0.34.0-win32\\geckodriver.exe");
+		      System.setProperty("webdriver.gecko.driver","C:\\firefoxdriver\\geckodriver.exe");
 		      browser = new FirefoxDriver();
 		  	  browser.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
 			  String url="https://testpages.eviltester.com/styled/apps/calculator.html";
@@ -26,12 +26,45 @@ public class Selenium_calculator {
 		
 	  }
 	 
+	 
+	 
+	 
+	 // Test 1 : check the addition with two positive numbers 3+3
 	 @Test
 		public void Tests1() {
 	    	
 			
-				browser.findElement(By.id("button01")).click();
+				browser.findElement(By.id("button03")).click();
 				browser.findElement(By.id("buttonplus")).click();
+				browser.findElement(By.id("button03")).click();
+				try {
+					  Thread.sleep(1000);
+					} catch (InterruptedException e) {
+					  Thread.currentThread().interrupt();
+					}
+				
+				browser.findElement(By.id("buttonequals")).click();
+			    System.out.println("hello");
+				
+				String result= browser.findElement(By.id("calculated-display")).getAttribute("value").toString();
+				System.out.println(result);	
+				String Expected= "6";
+				assertEquals(Expected,result);
+				browser.findElement(By.id("buttonallclear")).click();
+				browser.close();
+	 }
+	 
+	 
+	 
+	 
+	 
+	 // Test 2  : check the subtraction   with equal numbers , 2-2
+	 @Test
+		public void Tests2() {
+	    	
+		        
+				browser.findElement(By.id("button02")).click();
+				browser.findElement(By.id("buttonminus")).click();
 				browser.findElement(By.id("button02")).click();
 				try {
 					  Thread.sleep(1000);
@@ -44,8 +77,299 @@ public class Selenium_calculator {
 				
 				String result= browser.findElement(By.id("calculated-display")).getAttribute("value").toString();
 				System.out.println(result);	
-				String Expected= "3";
+				String Expected= "0";
 				assertEquals(Expected,result);
+				browser.findElement(By.id("buttonallclear")).click();
+				browser.close();
+	 }
+	 
+	 
+	 
+	
+	  
+	  
+	 
+	 // Test 3 : check the subtraction with two positive numbers 5-3
+	 @Test
+	 public void Tests3() {
+	     
+	      
+	     browser.findElement(By.id("button05")).click();
+	     browser.findElement(By.id("buttonminus")).click();
+	     browser.findElement(By.id("button03")).click();
+	     try {
+	           Thread.sleep(1000);
+	         } catch (InterruptedException e) {
+	           Thread.currentThread().interrupt();
+	         }
+	     
+	     browser.findElement(By.id("buttonequals")).click();
+	     System.out.println("hello");
+	     
+	     String result= browser.findElement(By.id("calculated-display")).getAttribute("value").toString();
+	     System.out.println(result);    
+	     String Expected= "2";
+	     assertEquals(Expected,result);
+	     browser.findElement(By.id("buttonallclear")).click();
+	     browser.close();
+	 }
+	  
+	  
+	  
+	 // Test 4 : check the subtraction with two positive numbers  the first one is smaller
+	 @Test
+	 public void Tests4() {
+	     
+	      
+	     browser.findElement(By.id("button03")).click();
+	     browser.findElement(By.id("buttonminus")).click();
+	     browser.findElement(By.id("button05")).click();
+	     try {
+	           Thread.sleep(1000);
+	         } catch (InterruptedException e) {
+	           Thread.currentThread().interrupt();
+	         }
+	     
+	     browser.findElement(By.id("buttonequals")).click();
+	     System.out.println("hello");
+	     
+	     String result= browser.findElement(By.id("calculated-display")).getAttribute("value").toString();
+	     System.out.println(result);    
+	     String Expected= "-2";
+	     assertEquals(Expected,result);
+	     browser.findElement(By.id("buttonallclear")).click();
+	     browser.close();
+	 }
+	  
+	  
+	  
+	// Test 5 division two positive numbers 6/3
+	 @Test
+	 public void Tests5() {
+	     
+	    
+	     browser.findElement(By.id("button06")).click();
+	     browser.findElement(By.id("buttondivide")).click();
+	     browser.findElement(By.id("button03")).click();
+	     try {
+	           Thread.sleep(1000);
+	         } catch (InterruptedException e) {
+	           Thread.currentThread().interrupt();
+	         }
+	     
+	     browser.findElement(By.id("buttonequals")).click();
+	     System.out.println("hello");
+	     
+	     String result= browser.findElement(By.id("calculated-display")).getAttribute("value").toString();
+	     System.out.println(result);    
+	     String Expected= "2";
+	     assertEquals(Expected,result);
+	     browser.findElement(By.id("buttonallclear")).click();
+	     browser.close();
+	 }
+	 
+	 
+	 
+	 
+	 
+	 // Test 6 : division positive number by 0: 3/0
+	 @Test
+	 public void Tests6() {
+	     
+	     browser.findElement(By.id("button03")).click();
+	     browser.findElement(By.id("buttondivide")).click();
+	     browser.findElement(By.id("button00")).click();
+	     try {
+	           Thread.sleep(1000);
+	         } catch (InterruptedException e) {
+	           Thread.currentThread().interrupt();
+	         }
+	     
+	     browser.findElement(By.id("buttonequals")).click();
+	     System.out.println("hello");
+	     
+	     String result= browser.findElement(By.id("calculated-display")).getAttribute("value").toString();
+	     System.out.println(result);    
+	     String Expected= "Infinity";
+	     assertEquals(Expected,result);
+	     browser.findElement(By.id("buttonallclear")).click();
+	     browser.close();
+	 }
+	 
+	 
+	 
+	 
+		
+	 // Test 7 : division  zero by positive number   0/9
+	 @Test
+	 public void Tests7() {
+	     
+	     browser.findElement(By.id("button00")).click();
+	     browser.findElement(By.id("buttondivide")).click();
+	     browser.findElement(By.id("button09")).click();
+	     try {
+	           Thread.sleep(1000);
+	         } catch (InterruptedException e) {
+	           Thread.currentThread().interrupt();
+	         }
+	     
+	     browser.findElement(By.id("buttonequals")).click();
+	     System.out.println("hello");
+	     
+	     String result= browser.findElement(By.id("calculated-display")).getAttribute("value").toString();
+	     System.out.println(result);    
+	     String Expected= "0";
+	     assertEquals(Expected,result);
+	     browser.findElement(By.id("buttonallclear")).click();
+	     browser.close();
+	 }
+	 
+	 
+	 
+	 
+	 // Test 8 : division  zero by zero   0/0
+	 @Test
+	 public void Tests8() {
+	     
+	     browser.findElement(By.id("button00")).click();
+	     browser.findElement(By.id("buttondivide")).click();
+	     browser.findElement(By.id("button00")).click();
+	     try {
+	           Thread.sleep(1000);
+	         } catch (InterruptedException e) {
+	           Thread.currentThread().interrupt();
+	         }
+	     
+	     browser.findElement(By.id("buttonequals")).click();
+	     System.out.println("hello");
+	     
+	     String result= browser.findElement(By.id("calculated-display")).getAttribute("value").toString();
+	     System.out.println(result);    
+	     String Expected= "NaN";
+	     assertEquals(Expected,result);
+	     browser.findElement(By.id("buttonallclear")).click();
+	     browser.close();
+	 }
+	 
+	 
+	 
+	 
+	 // Test 9 : multiply  two positive numbers  7*4  
+	 @Test
+	 public void Tests9() {
+	     
+	     browser.findElement(By.id("button07")).click();
+	     browser.findElement(By.id("buttonmultiply")).click();
+	     browser.findElement(By.id("button04")).click();
+	     try {
+	           Thread.sleep(1000);
+	         } catch (InterruptedException e) {
+	           Thread.currentThread().interrupt();
+	         }
+	     
+	     browser.findElement(By.id("buttonequals")).click();
+	     System.out.println("hello");
+	     
+	     String result= browser.findElement(By.id("calculated-display")).getAttribute("value").toString();
+	     System.out.println(result);    
+	     String Expected= "28";
+	     assertEquals(Expected,result);
+	     browser.findElement(By.id("buttonallclear")).click();
+	     browser.close();
+	 }
+	 
+	 
+	 
+	 
+	 
+	 // Test 10 : multiply   positive numbers with negative  -2*7
+	 @Test
+	 public void Tests10() {
+		 browser.findElement(By.id("button00")).click();
+		 browser.findElement(By.id("buttonminus")).click();
+	     browser.findElement(By.id("button02")).click();
+	     browser.findElement(By.id("buttonmultiply")).click();
+	     browser.findElement(By.id("button07")).click();
+	     try {
+	           Thread.sleep(1000);
+	         } catch (InterruptedException e) {
+	           Thread.currentThread().interrupt();
+	         }
+	     
+	     browser.findElement(By.id("buttonequals")).click();
+	     System.out.println("hello");
+	     
+	     String result= browser.findElement(By.id("calculated-display")).getAttribute("value").toString();
+	     System.out.println(result);    
+	     String Expected= "-14";
+	     assertEquals(Expected,result);
+	     browser.findElement(By.id("buttonallclear")).click();
+	     browser.close();
+	 }
+	 
+	 
+	 
+	 // Test 11 : multiply   positive number with zero  5*0
+	 @Test
+	 public void Tests11() {
+		 browser.findElement(By.id("button00")).click();
+	     browser.findElement(By.id("buttonmultiply")).click();
+	     browser.findElement(By.id("button05")).click();
+	     try {
+	           Thread.sleep(1000);
+	         } catch (InterruptedException e) {
+	           Thread.currentThread().interrupt();
+	         }
+	     
+	     browser.findElement(By.id("buttonequals")).click();
+	     System.out.println("hello");
+	     
+	     String result= browser.findElement(By.id("calculated-display")).getAttribute("value").toString();
+	     System.out.println(result);    
+	     String Expected= "0";
+	     assertEquals(Expected,result);
+	     browser.findElement(By.id("buttonallclear")).click();
+	     browser.close();
+	 }
+	 
+	 
+	 
+	 // Test 12 : multiply   zero by zero  0*0
+	 @Test
+	 public void Tests12() {
+		 browser.findElement(By.id("button00")).click();
+	     browser.findElement(By.id("buttonmultiply")).click();
+	     browser.findElement(By.id("button00")).click();
+	     try {
+	           Thread.sleep(1000);
+	         } catch (InterruptedException e) {
+	           Thread.currentThread().interrupt();
+	         }
+	     
+	     browser.findElement(By.id("buttonequals")).click();
+	     System.out.println("hello");
+	     
+	     String result= browser.findElement(By.id("calculated-display")).getAttribute("value").toString();
+	     System.out.println(result);    
+	     String Expected= "0";
+	     assertEquals(Expected,result);
+	     browser.findElement(By.id("buttonallclear")).click();
+	     browser.close();
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 				
 				
-}}
+				
+}
