@@ -8,7 +8,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 
 @Suite.SuiteClasses({
-	checkPassword.class
+	Triangle.class
 })
 public class TestSuite {
 	
